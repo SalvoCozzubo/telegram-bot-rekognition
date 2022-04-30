@@ -1,0 +1,47 @@
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  TelegramApiToken:
+    Type: String
+  Keyword:
+    Type: String
+
+Resources:
+  WebhookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/webhook
+      Runtime: nodejs14.x
+      Handler: index.handler
+      Architectures:
+        - arm64
+      Timeout: 10
+      FunctionUrlConfig:
+        AuthType: NONE
+      Environment:
+        Variables:
+          TELEGRAM_API_TOKEN: !Ref TelegramApiToken
+          KEYWORD: !Ref Keyword
+      Layers:
+        - !Ref Dependencies
+      Policies:
+        Statement:
+          - Sid: Rekognition
+            Effect: Allow
+            Action:
+              - rekognition:DetectLabels
+            Resource:
+              - '*'
+
+  Dependencies:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      CompatibleRuntimes:
+        - nodejs14.x
+      ContentUri: src/layer-deps
+    Metadata:
+      BuildMethod: nodejs14.x
+
+Outputs:
+  Webhook:
+    Value: !GetAtt WebhookFunctionUrl.FunctionUrl

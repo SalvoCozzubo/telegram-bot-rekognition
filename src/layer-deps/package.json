@@ -1,0 +1,16 @@
+{
+  "name": "layer-deps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-rekognition": "^3.81.0",
+    "axios": "^0.27.2"
+  }
+}
