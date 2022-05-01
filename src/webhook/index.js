@@ -38,7 +38,7 @@ module.exports.handler = async (event) => {
   } else {
     await sendMessage({
       userId,
-      message: `Non è un ${KEYWORD}`,
+      message: `It's not a ${KEYWORD}`,
     });
   }
 

@@ -14,14 +14,11 @@ const getFileFromTelegram = async (fileId) => {
   };
 
   const response = await axios(params);
-  console.log('response', JSON.stringify(response.data, null, 2));
   return response.data.result.file_path;
 };
 
 const downloadPicture = async (fileId) => {
   const filePath = await getFileFromTelegram(fileId);
-
-  console.log('filePath', `${TELEGRAM_FILE_URL}/${filePath}`);
 
   const response = await axios({
     url: `${TELEGRAM_FILE_URL}/${filePath}`,
