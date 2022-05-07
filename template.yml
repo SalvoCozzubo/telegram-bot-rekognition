@@ -8,15 +8,17 @@ Parameters:
 
 Metadata:
   AWS::ServerlessRepo::Application:
-    Name: Telegram Bot with AWS Rekognition
+    Name: Telegram-Bot-Rekognition
     Author: Salvatore Cozzubo
     ReadmeUrl: README.md
+    LicenseUrl: LICENSE
+    Labels:
+      - telegram
+      - rekognition
+      - nodejs
     SourceCodeUrl: https://github.com/SalvoCozzubo/telegram-bot-rekognition
     HomePageUrl: https://www.salvatorecozzubo.com
-    Description:
-      - | 
-        Deploy a webhook for Telegram Bot that uses AWS Rekognition 
-        to get labels from user's picture message
+    Description: Deploy a webhook for Telegram Bot that uses AWS Rekognition to get labels from user's picture message
     SemanticVersion: 1.0.0
 
 Resources:
