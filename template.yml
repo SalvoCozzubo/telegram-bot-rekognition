@@ -19,7 +19,7 @@ Metadata:
     SourceCodeUrl: https://github.com/SalvoCozzubo/telegram-bot-rekognition
     HomePageUrl: https://www.salvatorecozzubo.com
     Description: Deploy a webhook for Telegram Bot that uses AWS Rekognition to get labels from user's picture message
-    SemanticVersion: 1.0.0
+    SemanticVersion: 1.0.1
 
 Resources:
   WebhookFunction:
@@ -44,13 +44,7 @@ Resources:
       Layers:
         - !Ref Dependencies
       Policies:
-        Statement:
-          - Sid: Rekognition
-            Effect: Allow
-            Action:
-              - rekognition:DetectLabels
-            Resource:
-              - '*'
+        - RekognitionDetectOnlyPolicy: {}
 
   Dependencies:
     Type: AWS::Serverless::LayerVersion
