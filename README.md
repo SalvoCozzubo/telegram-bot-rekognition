@@ -6,4 +6,4 @@ Made with ❤️ by Salvatore Cozzubo. Available on the [AWS Serverless Applicat
 
 ## License
 
-MIT License (undefined)
+MIT License

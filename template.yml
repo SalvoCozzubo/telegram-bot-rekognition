@@ -31,8 +31,12 @@ Resources:
       Architectures:
         - arm64
       Timeout: 10
-      FunctionUrlConfig:
-        AuthType: NONE
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /webhook
+            Method: POST
       Environment:
         Variables:
           TELEGRAM_API_TOKEN: !Ref TelegramApiToken
@@ -58,5 +62,6 @@ Resources:
       BuildMethod: nodejs14.x
 
 Outputs:
-  Webhook:
-    Value: !GetAtt WebhookFunctionUrl.FunctionUrl
+  WebEndpoint:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Stage/webhook"

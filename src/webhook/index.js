@@ -21,7 +21,10 @@ module.exports.handler = async (event) => {
   const userId = body.message.chat.id;
 
   if (!body.message.photo) {
-    return '';
+    return {
+      statusCode: 200,
+      body: '',
+    };
   }
 
   const fileId = findImageWithBestQuality(body.message.photo);
@@ -42,5 +45,8 @@ module.exports.handler = async (event) => {
     });
   }
 
-  return '';
+  return {
+    statusCode: 200,
+    body: '',
+  };
 };
